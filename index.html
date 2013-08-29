@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>TypeScript Backbone paging</title>
+    <link rel="stylesheet" href="paging/Content/bootstrap/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="paging/Content/bootstrap/bootstrap-theme.css" type="text/css" />
+    <link rel="stylesheet" href="paging/Content/app.css" type="text/css" />
+    <script src="paging/Scripts/jquery-1.9.1.js"></script>
+    <script src="paging/Scripts/underscore.js"></script>
+    <script src="paging/Scripts/backbone.js"></script>
+</head>
+    <body>
+        <script type="text/template" id="paging-template">
+            <ul class="pagination">
+                <li class="<% if(isStart) print("disabled") %>"><a href="#" data-page="1"><span class="glyphicon glyphicon-fast-backward" ></span></a></li>
+                <li class="<% if(isStart) print("disabled") %>"><a href="#" data-page="<%= startPage - 1 %>"><span class="glyphicon glyphicon-step-backward" ></span></a></li>
+                <li class="<% if(isStart) print("disabled") %>"><a href="#" data-page="<%= activePage - 1 %>"><span class="glyphicon glyphicon-chevron-left" ></span></a></li>
+                <% for (var i = startPage; i <= endPage; i++) { %> 
+                    <li class="<% if (activePage == i) print("active") %>"><a href="#"  data-page="<%= i %>"><span ><strong><%= i %></strong></span></a></li> 
+                <% } %>
+                <li class="<% if(isEnd) print("disabled") %>"><a href="#" data-page="<%= activePage + 1 %>"><span class="glyphicon glyphicon-chevron-right" ></span></a></li>
+                <li class="<% if(isEnd) print("disabled") %>"><a href="#" data-page="<%= startPage + pageShown %>"><span class="glyphicon glyphicon-step-forward" ></span></a></li>
+                <li class="<% if(isEnd) print("disabled") %>"><a href="#" data-page="<%= pageCount %>"><span class="glyphicon glyphicon-fast-forward" ></span></a></li>
+            </ul>
+        </script>
+        <div class="container">
+            <header class="page-header">
+                <h1>TypeScript Backbone paging</h1>
+            </header>
+        
+        
+            <div id="content"></div>
+        </div>
+        <script src="paging/app.js"></script>
+    </body>
+</html>
